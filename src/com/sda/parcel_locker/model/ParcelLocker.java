@@ -1,13 +1,45 @@
 package com.sda.parcel_locker.model;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class ParcelLocker {
 
     private int id;
     private String name;
     private Address address;
-    private Package[] packages;
+    private List<Package> packages;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Package> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
+    }
 
     public ParcelLocker(int id, String name, Address address) {
         this.id = id;
@@ -15,7 +47,7 @@ public class ParcelLocker {
         this.address = address;
     }
 
-    public ParcelLocker(int id, String name, Address address, Package[] packages) {
+    public ParcelLocker(int id, String name, Address address, List<Package> packages) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -28,7 +60,8 @@ public class ParcelLocker {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address=" + address +
-                ", packages=" + Arrays.toString(packages) +
+                ", packages=" + packages +
                 '}';
     }
 }
+
