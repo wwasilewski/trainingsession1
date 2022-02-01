@@ -9,6 +9,19 @@ public class ParcelLocker {
     private Address address;
     private List<Package> packages;
 
+    public ParcelLocker(int id, String name, Address address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    public ParcelLocker(int id, String name, Address address, List<Package> packages) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.packages = packages;
+    }
+
     public int getId() {
         return id;
     }
@@ -38,19 +51,6 @@ public class ParcelLocker {
     }
 
     public void setPackages(List<Package> packages) {
-        this.packages = packages;
-    }
-
-    public ParcelLocker(int id, String name, Address address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-    }
-
-    public ParcelLocker(int id, String name, Address address, List<Package> packages) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
         this.packages = packages;
     }
 

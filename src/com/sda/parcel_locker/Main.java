@@ -2,6 +2,7 @@ package com.sda.parcel_locker;
 
 import com.sda.parcel_locker.model.*;
 import com.sda.parcel_locker.service.PLManager;
+import com.sda.parcel_locker.userinterface.UserInterface;
 
 public class Main {
 
@@ -25,6 +26,8 @@ public class Main {
         System.out.println("after removing:");
         pl.readPL();
 
+        UserInterface userInterface = new UserInterface();
+        userInterface.showMenu();
     }
 
 }
