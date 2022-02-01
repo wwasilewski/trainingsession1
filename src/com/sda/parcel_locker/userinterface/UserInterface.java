@@ -1,6 +1,5 @@
 package com.sda.parcel_locker.userinterface;
 
-import com.sda.parcel_locker.model.Package;
 import com.sda.parcel_locker.service.PackageManager;
 import com.sda.parcel_locker.service.ParcelLockerManager;
 
@@ -77,8 +76,9 @@ public class UserInterface {
         System.out.println("[1] Create Package");
         System.out.println("[2] Read all Packages");
         System.out.println("[3] Update Package");
-        System.out.println("[4] BACK");
-        System.out.println("[5] EXIT");
+        System.out.println("[4] Delete Package");
+        System.out.println("[5] BACK");
+        System.out.println("[6] EXIT");
 
         String userChoice = sc.nextLine();
         switch (userChoice) {
@@ -91,12 +91,17 @@ public class UserInterface {
                 showPackageMenu();
                 break;
             case "3":
-
-
+                packageManager.updatePackageName();
+                showPackageMenu();
+                break;
             case "4":
-                showMenu();
+                packageManager.deletePackage();
+                showPackageMenu();
                 break;
             case "5":
+                showMenu();
+                break;
+            case "6":
                 System.out.println("Good bye");
                 break;
             default:

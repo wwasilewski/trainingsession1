@@ -51,13 +51,20 @@ public class PackageManager {
         System.out.println("What to do now?");
     }
 
-//    public Package updatePackage(int id, String name) {
-//        packages.set(id, packages.get(id).getName(name))
-//    }
-
-    public void deletePackage(int id) {
-        packages.remove(id);
+    public void updatePackageName() {
+        System.out.println("Updating Package: ");
+        System.out.println("Provide id:");
+        int id = sc.nextInt();
+        System.out.println("Provide name: ");
+        String name = sc.next();
+        packages.get(id - 1).setName(name);
+        System.out.println("Package updated");
     }
 
-
+    public void deletePackage() {
+        System.out.println("Provide id: ");
+        int id = sc.nextInt();
+        packages.set(id, null);
+        System.out.println("Package deleted");
+    }
 }

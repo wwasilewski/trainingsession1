@@ -55,7 +55,7 @@ public class ParcelLockerManager {
     public void deletePL() {
         System.out.println("Provide id: ");
         int id = sc.nextInt();
-        parcelLockers.remove(id);
+        parcelLockers.set(id, null);
         System.out.println("Parcel Locker deleted");
     }
 }
