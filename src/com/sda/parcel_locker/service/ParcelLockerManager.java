@@ -22,7 +22,6 @@ public class ParcelLockerManager {
     }
 
     public void createPL() {
-        System.out.println("Creating Parcel Locker: ");
         System.out.println("Provide id: ");
         int id = sc.nextInt();
         System.out.println("Provide name: ");
@@ -34,21 +33,29 @@ public class ParcelLockerManager {
         System.out.println("Provide postalCode: ");
         String postalCode = sc.next();
         parcelLockers.add(new ParcelLocker(id, name, new Address(street, city, postalCode)));
+        System.out.println("Parcel Locker created");
     }
 
     public void readPL() {
         System.out.println("All Parcel Lockers: ");
         System.out.println(parcelLockers);
+        System.out.println("What to do now?");
     }
 
-//    public ParcelLocker updatePL(int id, String name) {
-//        parcelLockers.set(parcelLockers.get(id), parcelLockers.get(id).setName(name));
-//    }
+    public void updatePL() {
+        System.out.println("Updating Parcel Locker: ");
+        System.out.println("Provide id: ");
+        int id = sc.nextInt();
+        System.out.println("Provide name: ");
+        String name = sc.next();
+        parcelLockers.get(id - 1).setName(name);
+        System.out.println("Parcel Locker updated");
+    }
 
     public void deletePL() {
-        System.out.println("Deleting Parcel Locker: ");
         System.out.println("Provide id: ");
         int id = sc.nextInt();
         parcelLockers.remove(id);
+        System.out.println("Parcel Locker deleted");
     }
 }

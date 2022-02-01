@@ -1,5 +1,13 @@
 package com.sda.parcel_locker.model;
 
 public enum State {
-    PREPARING, SENT, DELIVERED
+    PRE("Prepared"),
+    SENT("Sent"),
+    DELIV("Delivered");
+
+    private String fullName;
+
+    State(String fullName) {
+        this.fullName = fullName;
+    }
 }
