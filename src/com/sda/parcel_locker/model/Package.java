@@ -8,12 +8,12 @@ public class Package {
     private int weight;
     private String recipient;
     private String sender;
-    private ParcelLocker senderPL;
-    private ParcelLocker recipientPL;
+    private String senderPL;
+    private String recipientPL;
     private State state;
 
     public Package(int id, String name, Size size, int weight, String recipient, String sender,
-                   ParcelLocker senderPL, ParcelLocker recipientPL, State state) {
+                   String senderPL, String recipientPL, State state) {
         this.id = id;
         this.name = name;
         this.size = size;
@@ -73,19 +73,19 @@ public class Package {
         this.sender = sender;
     }
 
-    public ParcelLocker getSenderPL() {
+    public String getSenderPL() {
         return senderPL;
     }
 
-    public void setSenderPL(ParcelLocker senderPL) {
+    public void setSenderPL(String senderPL) {
         this.senderPL = senderPL;
     }
 
-    public ParcelLocker getRecipientPL() {
+    public String getRecipientPL() {
         return recipientPL;
     }
 
-    public void setRecipientPL(ParcelLocker recipientPL) {
+    public void setRecipientPL(String recipientPL) {
         this.recipientPL = recipientPL;
     }
 

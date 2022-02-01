@@ -17,7 +17,7 @@ public class PackageManager {
     }
 
     public void createPackage(int id, String name, Size size, int weight, String recipient,
-                              String sender, ParcelLocker senderPL, ParcelLocker recipientPL,
+                              String sender, String senderPL, String recipientPL,
                               State state) {
         packages.add(new Package(id, name, size, weight, recipient, sender, senderPL, recipientPL, state));
     }
