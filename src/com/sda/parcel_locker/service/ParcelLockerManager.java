@@ -14,6 +14,10 @@ public class ParcelLockerManager {
 
     public ParcelLockerManager() {
         this.parcelLockers = new ArrayList<>();
+        initData();
+    }
+
+    public void initData() {
         parcelLockers.add(new ParcelLocker(1, "SC1", new Address("Szczecinska", "Szczecin", "11-712")));
         parcelLockers.add(new ParcelLocker(2, "WA2", new Address("Warszawska", "Warszawa", "22-712")));
         parcelLockers.add(new ParcelLocker(3, "KR3", new Address("Krakowska", "Krakow", "33-712")));
@@ -32,6 +36,7 @@ public class ParcelLockerManager {
         String city = sc.next();
         System.out.println("Provide postalCode: ");
         String postalCode = sc.next();
+
         parcelLockers.add(new ParcelLocker(id, name, new Address(street, city, postalCode)));
         System.out.println("Parcel Locker created");
     }
@@ -48,6 +53,7 @@ public class ParcelLockerManager {
         int id = sc.nextInt();
         System.out.println("Provide name: ");
         String name = sc.next();
+
         parcelLockers.get(id - 1).setName(name);
         System.out.println("Parcel Locker updated");
     }
@@ -55,7 +61,15 @@ public class ParcelLockerManager {
     public void deletePL() {
         System.out.println("Provide id: ");
         int id = sc.nextInt();
+
         parcelLockers.set(id - 1, null);
         System.out.println("Parcel Locker deleted");
+    }
+
+    @Override
+    public String toString() {
+        return "ParcelLockerManager{" +
+                "parcelLockers=" + parcelLockers +
+                '}';
     }
 }

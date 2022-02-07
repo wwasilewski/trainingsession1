@@ -15,6 +15,10 @@ public class PackageManager {
 
     public PackageManager() {
         this.packages = new ArrayList<>();
+        initData();
+    }
+
+    public void initData() {
         packages.add(new Package(1, "PACK1", Size.S, 1, "Tom", "Jack", "SC1", "WA2", State.SENT));
         packages.add(new Package(2, "PACK2", Size.M, 4, "Jerry", "Ann", "WA2", "KR3", State.PRE));
         packages.add(new Package(3, "PACK3", Size.L, 7, "Bob", "Marie", "KR3", "WR4", State.DELIV));
@@ -41,6 +45,7 @@ public class PackageManager {
         String recipientPL = sc.next();
         System.out.println("Provide state(PRE, SENT, DELIV) : ");
         State state = State.valueOf(sc.next());
+
         packages.add(new Package(id, name, size, weight, recipient, sender, senderPL, recipientPL, state));
         System.out.println("Package created");
     }
@@ -57,6 +62,7 @@ public class PackageManager {
         int id = sc.nextInt();
         System.out.println("Provide name: ");
         String name = sc.next();
+
         packages.get(id - 1).setName(name);
         System.out.println("Package updated");
     }
@@ -64,7 +70,15 @@ public class PackageManager {
     public void deletePackage() {
         System.out.println("Provide id: ");
         int id = sc.nextInt();
+
         packages.set(id - 1, null);
         System.out.println("Package deleted");
+    }
+
+    @Override
+    public String toString() {
+        return "PackageManager{" +
+                "packages=" + packages +
+                '}';
     }
 }
