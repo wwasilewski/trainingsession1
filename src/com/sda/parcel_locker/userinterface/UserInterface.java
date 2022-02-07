@@ -68,7 +68,6 @@ public class UserInterface {
             default:
                 System.out.println("Wrong input, pick again");
                 showPLMenu();
-                break;
         }
     }
 

@@ -39,8 +39,8 @@ public class PackageManager {
         String senderPL = sc.next();
         System.out.println("Provide recipient's PL:");
         String recipientPL = sc.next();
-        System.out.println("Provide state: ");
-        State state = State.valueOf(sc.nextLine());
+        System.out.println("Provide state(PRE, SENT, DELIV) : ");
+        State state = State.valueOf(sc.next());
         packages.add(new Package(id, name, size, weight, recipient, sender, senderPL, recipientPL, state));
         System.out.println("Package created");
     }
@@ -64,7 +64,7 @@ public class PackageManager {
     public void deletePackage() {
         System.out.println("Provide id: ");
         int id = sc.nextInt();
-        packages.set(id, null);
+        packages.set(id - 1, null);
         System.out.println("Package deleted");
     }
 }

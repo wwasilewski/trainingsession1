@@ -1,5 +1,6 @@
 package com.sda.parcel_locker.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParcelLocker {
@@ -13,6 +14,7 @@ public class ParcelLocker {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.packages = new ArrayList<>();
     }
 
     public ParcelLocker(int id, String name, Address address, List<Package> packages) {
