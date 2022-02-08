@@ -18,16 +18,14 @@ public class ParcelLockerManager {
     }
 
     public void initData() {
-        parcelLockers.add(new ParcelLocker(1, "SC1", new Address("Szczecinska", "Szczecin", "11-712")));
-        parcelLockers.add(new ParcelLocker(2, "WA2", new Address("Warszawska", "Warszawa", "22-712")));
-        parcelLockers.add(new ParcelLocker(3, "KR3", new Address("Krakowska", "Krakow", "33-712")));
-        parcelLockers.add(new ParcelLocker(4, "WR4", new Address("Wroclawska", "Wroclaw", "44-712")));
-        parcelLockers.add(new ParcelLocker(5, "GD5", new Address("Gdanska", "Gdansk", "55-712")));
+        parcelLockers.add(new ParcelLocker("SC1", new Address("Szczecinska", "Szczecin", "11-712")));
+        parcelLockers.add(new ParcelLocker("WA2", new Address("Warszawska", "Warszawa", "22-712")));
+        parcelLockers.add(new ParcelLocker("KR3", new Address("Krakowska", "Krakow", "33-712")));
+        parcelLockers.add(new ParcelLocker("WR4", new Address("Wroclawska", "Wroclaw", "44-712")));
+        parcelLockers.add(new ParcelLocker("GD5", new Address("Gdanska", "Gdansk", "55-712")));
     }
 
     public void createPL() {
-        System.out.println("Provide id: ");
-        int id = sc.nextInt();
         System.out.println("Provide name: ");
         String name = sc.next();
         System.out.println("Now address, provide street:");
@@ -37,7 +35,7 @@ public class ParcelLockerManager {
         System.out.println("Provide postalCode: ");
         String postalCode = sc.next();
 
-        parcelLockers.add(new ParcelLocker(id, name, new Address(street, city, postalCode)));
+        parcelLockers.add(new ParcelLocker(name, new Address(street, city, postalCode)));
         System.out.println("Parcel Locker created");
     }
 
@@ -64,6 +62,10 @@ public class ParcelLockerManager {
 
         parcelLockers.set(id - 1, null);
         System.out.println("Parcel Locker deleted");
+    }
+
+    public static ParcelLocker addLocker(String name, Address address) {
+        return new ParcelLocker(name, address);
     }
 
     @Override

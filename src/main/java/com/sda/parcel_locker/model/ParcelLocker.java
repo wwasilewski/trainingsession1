@@ -2,33 +2,32 @@ package com.sda.parcel_locker.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ParcelLocker {
 
-    private int id;
+    private String id = UUID.randomUUID().toString();
     private String name;
     private Address address;
     private List<Package> packages;
 
-    public ParcelLocker(int id, String name, Address address) {
-        this.id = id;
+    public ParcelLocker(String name, Address address) {
         this.name = name;
         this.address = address;
         this.packages = new ArrayList<>();
     }
 
-    public ParcelLocker(int id, String name, Address address, List<Package> packages) {
-        this.id = id;
+    public ParcelLocker(String name, Address address, List<Package> packages) {
         this.name = name;
         this.address = address;
         this.packages = packages;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
