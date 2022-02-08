@@ -5,11 +5,9 @@ import com.sda.parcel_locker.model.ParcelLocker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ParcelLockerManager {
 
-    private Scanner sc = new Scanner(System.in);
     static List<ParcelLocker> parcelLockers = new ArrayList<>();
 
     public ParcelLockerManager() {
@@ -23,45 +21,6 @@ public class ParcelLockerManager {
         parcelLockers.add(new ParcelLocker("WR4", new Address("Wroclawska", "Wroclaw", "44-712")));
         parcelLockers.add(new ParcelLocker("GD5", new Address("Gdanska", "Gdansk", "55-712")));
     }
-
-//    public void createPL() {
-//        System.out.println("Provide name: ");
-//        String name = sc.next();
-//        System.out.println("Now address, provide street:");
-//        String street = sc.next();
-//        System.out.println("Provide city: ");
-//        String city = sc.next();
-//        System.out.println("Provide postalCode: ");
-//        String postalCode = sc.next();
-//
-//        parcelLockers.add(new ParcelLocker(name, new Address(street, city, postalCode)));
-//        System.out.println("Parcel Locker created");
-//    }
-
-//    public void readPL() {
-//        System.out.println("All Parcel Lockers: ");
-//        System.out.println(parcelLockers);
-//        System.out.println("What to do now?");
-//    }
-
-    public void updatePL() {
-        System.out.println("Updating Parcel Locker: ");
-        System.out.println("Provide id: ");
-        int id = sc.nextInt();
-        System.out.println("Provide name: ");
-        String name = sc.next();
-
-        parcelLockers.get(id - 1).setName(name);
-        System.out.println("Parcel Locker updated");
-    }
-
-//    public void deletePL() {
-//        System.out.println("Provide id: ");
-//        int id = sc.nextInt();
-//
-//        parcelLockers.set(id - 1, null);
-//        System.out.println("Parcel Locker deleted");
-//    }
 
     public static ParcelLocker addLocker(String name, Address address) {
         ParcelLocker parcelLocker = new ParcelLocker(name, address);
@@ -84,6 +43,35 @@ public class ParcelLockerManager {
         }
         return false;
     }
+
+    public static void showLockersByCity(String city) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getAddress().getCity().equals(city)) {
+                System.out.println(parcelLocker);
+            }
+        }
+    }
+
+    public static boolean updateLockerName(String id, String newName) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getId().equals(id)) {
+                parcelLocker.setName(newName);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateLockerAddress(String id, Address newAddress) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getId().equals(id)) {
+                parcelLocker.setAddress(newAddress);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
     public String toString() {

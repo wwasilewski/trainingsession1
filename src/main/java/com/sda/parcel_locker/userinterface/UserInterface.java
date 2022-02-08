@@ -33,27 +33,35 @@ public class UserInterface {
     public static void showPLMenu() {
         do {
             System.out.println("[1] Create Parcel Locker");
-            System.out.println("[2] Read/Show all Parcel Lockers");
-            System.out.println("[3] Update Parcel Locker");
-            System.out.println("[4] Delete Parcel Locker");
-            System.out.println("[5] BACK");
+            System.out.println("[2] Show all Parcel Lockers");
+            System.out.println("[3] Show Parcel Lockers by city");
+            System.out.println("[4] Update Parcel Locker's name");
+            System.out.println("[5] Update Parcel Locker's address");
+            System.out.println("[6] Delete Parcel Locker");
+            System.out.println("[7] BACK");
             System.out.println("[0] EXIT");
 
             choice = sc.next();
             switch (choice) {
                 case "1":
-                    addParcelLocker();
+                    addLocker();
                     break;
                 case "2":
                     showAllLockers();
                     break;
                 case "3":
-                    parcelLockerManager.updatePL();
+                    showLockersByCity();
                     break;
                 case "4":
-                    removeLocker();
+                    updateLockerName();
                     break;
                 case "5":
+                    updateLockerAddress();
+                    break;
+                case "6":
+                    removeLocker();
+                    break;
+                case "7":
                     showMenu();
                     break;
                 case "0":
@@ -88,7 +96,7 @@ public class UserInterface {
         } while (!choice.equals("0"));
     }
 
-    public static void addParcelLocker() {
+    public static void addLocker() {
         System.out.println("Provide name: ");
         String name = sc.next();
         System.out.println("Now address, provide street:");
@@ -112,6 +120,36 @@ public class UserInterface {
 
         ParcelLockerManager.removeLocker(id);
         System.out.println("Locker removed");
+    }
+
+    public static void showLockersByCity() {
+        System.out.println("Provide city: ");
+        String city = sc.next();
+        ParcelLockerManager.showLockersByCity(city);
+    }
+
+    public static void updateLockerName() {
+        System.out.println("Provide id: ");
+        String id = sc.next();
+        System.out.println("Provide new name: ");
+        String name = sc.next();
+
+        ParcelLockerManager.updateLockerName(id, name);
+        System.out.println("Locker updated");
+    }
+
+    public static void updateLockerAddress() {
+        System.out.println("Provide id: ");
+        String id = sc.next();
+        System.out.println("Provide new street: ");
+        String street = sc.next();
+        System.out.println("Provide new city: ");
+        String city = sc.next();
+        System.out.println("Provide new postalCode: ");
+        String postal = sc.next();
+
+        ParcelLockerManager.updateLockerAddress(id, new Address(street, city, postal));
+        System.out.println("Locker updated");
     }
 
 
