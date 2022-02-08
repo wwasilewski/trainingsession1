@@ -10,10 +10,9 @@ import java.util.Scanner;
 public class ParcelLockerManager {
 
     private Scanner sc = new Scanner(System.in);
-    private List<ParcelLocker> parcelLockers;
+    static List<ParcelLocker> parcelLockers = new ArrayList<>();
 
     public ParcelLockerManager() {
-        this.parcelLockers = new ArrayList<>();
         initData();
     }
 
@@ -25,25 +24,25 @@ public class ParcelLockerManager {
         parcelLockers.add(new ParcelLocker("GD5", new Address("Gdanska", "Gdansk", "55-712")));
     }
 
-    public void createPL() {
-        System.out.println("Provide name: ");
-        String name = sc.next();
-        System.out.println("Now address, provide street:");
-        String street = sc.next();
-        System.out.println("Provide city: ");
-        String city = sc.next();
-        System.out.println("Provide postalCode: ");
-        String postalCode = sc.next();
+//    public void createPL() {
+//        System.out.println("Provide name: ");
+//        String name = sc.next();
+//        System.out.println("Now address, provide street:");
+//        String street = sc.next();
+//        System.out.println("Provide city: ");
+//        String city = sc.next();
+//        System.out.println("Provide postalCode: ");
+//        String postalCode = sc.next();
+//
+//        parcelLockers.add(new ParcelLocker(name, new Address(street, city, postalCode)));
+//        System.out.println("Parcel Locker created");
+//    }
 
-        parcelLockers.add(new ParcelLocker(name, new Address(street, city, postalCode)));
-        System.out.println("Parcel Locker created");
-    }
-
-    public void readPL() {
-        System.out.println("All Parcel Lockers: ");
-        System.out.println(parcelLockers);
-        System.out.println("What to do now?");
-    }
+//    public void readPL() {
+//        System.out.println("All Parcel Lockers: ");
+//        System.out.println(parcelLockers);
+//        System.out.println("What to do now?");
+//    }
 
     public void updatePL() {
         System.out.println("Updating Parcel Locker: ");
@@ -56,16 +55,34 @@ public class ParcelLockerManager {
         System.out.println("Parcel Locker updated");
     }
 
-    public void deletePL() {
-        System.out.println("Provide id: ");
-        int id = sc.nextInt();
-
-        parcelLockers.set(id - 1, null);
-        System.out.println("Parcel Locker deleted");
-    }
+//    public void deletePL() {
+//        System.out.println("Provide id: ");
+//        int id = sc.nextInt();
+//
+//        parcelLockers.set(id - 1, null);
+//        System.out.println("Parcel Locker deleted");
+//    }
 
     public static ParcelLocker addLocker(String name, Address address) {
-        return new ParcelLocker(name, address);
+        ParcelLocker parcelLocker = new ParcelLocker(name, address);
+        parcelLockers.add(parcelLocker);
+        return parcelLocker;
+    }
+
+    public static void showLockers() {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            System.out.println(parcelLocker);
+        }
+    }
+
+    public static boolean removeLocker(String id) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            if (parcelLocker.getId().equals(id)) {
+                parcelLockers.remove(parcelLocker);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

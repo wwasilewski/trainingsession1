@@ -57,6 +57,11 @@ public class ParcelLocker {
 
     @Override
     public String toString() {
-        return "ParcelLocker id:" + id + ",name: " + name;
+        return "ParcelLocker{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", packages=" + packages +
+                '}';
     }
 }
