@@ -11,6 +11,10 @@ public class ParcelLocker {
     private Address address;
     private List<Package> packages;
 
+    public ParcelLocker(String name) {
+        this.name = name;
+    }
+
     public ParcelLocker(String name, Address address) {
         this.name = name;
         this.address = address;

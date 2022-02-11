@@ -1,20 +1,21 @@
 package com.sda.parcel_locker.model;
 
+import java.util.UUID;
+
 public class Package {
 
-    private int id;
+    private String id = UUID.randomUUID().toString();
     private String name;
     private Size size;
     private int weight;
     private String recipient;
     private String sender;
-    private String senderPL;
-    private String recipientPL;
-    private State state;
+    private ParcelLocker senderPL;
+    private ParcelLocker recipientPL;
+    private State state = State.PRE;
 
-    public Package(int id, String name, Size size, int weight, String recipient, String sender,
-                   String senderPL, String recipientPL, State state) {
-        this.id = id;
+    public Package(String name, Size size, int weight, String recipient, String sender,
+                   ParcelLocker senderPL, ParcelLocker recipientPL) {
         this.name = name;
         this.size = size;
         this.weight = weight;
@@ -22,15 +23,6 @@ public class Package {
         this.sender = sender;
         this.senderPL = senderPL;
         this.recipientPL = recipientPL;
-        this.state = state;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -73,19 +65,19 @@ public class Package {
         this.sender = sender;
     }
 
-    public String getSenderPL() {
+    public ParcelLocker getSenderPL() {
         return senderPL;
     }
 
-    public void setSenderPL(String senderPL) {
+    public void setSenderPL(ParcelLocker senderPL) {
         this.senderPL = senderPL;
     }
 
-    public String getRecipientPL() {
+    public ParcelLocker getRecipientPL() {
         return recipientPL;
     }
 
-    public void setRecipientPL(String recipientPL) {
+    public void setRecipientPL(ParcelLocker recipientPL) {
         this.recipientPL = recipientPL;
     }
 

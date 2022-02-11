@@ -1,7 +1,9 @@
 package com.sda.parcel_locker.userinterface;
 
 import com.sda.parcel_locker.model.Address;
+import com.sda.parcel_locker.model.Package;
 import com.sda.parcel_locker.model.ParcelLocker;
+import com.sda.parcel_locker.model.Size;
 import com.sda.parcel_locker.service.PackageManager;
 import com.sda.parcel_locker.service.ParcelLockerManager;
 
@@ -60,7 +62,7 @@ public class UserInterface {
     public static void showPackageMenu() {
         do {
             System.out.println("[1] Create Package");
-            System.out.println("[2] Read all Packages");
+            System.out.println("[2] Show all packages by Locker");
             System.out.println("[3] Update Package");
             System.out.println("[4] Delete Package");
             System.out.println("[5] BACK");
@@ -68,8 +70,8 @@ public class UserInterface {
 
             choice = sc.next();
             switch (choice) {
-                case "1" -> packageManager.createPackage();
-                case "2" -> packageManager.readPackages();
+                case "1" -> addPackage();
+                case "2" -> showPackagesByLocker();
                 case "3" -> packageManager.updatePackageName();
                 case "4" -> packageManager.deletePackage();
                 case "5" -> showMenu();
@@ -143,6 +145,34 @@ public class UserInterface {
         } else {
             System.out.println("Wrong id");
         }
+    }
+
+    public static void addPackage() {
+        System.out.println("Provide name: ");
+        String name = sc.next();
+        System.out.println("Provide size(S,M,L,XL): ");
+        Size size = Size.valueOf(sc.next());
+        System.out.println("Provide weight: ");
+        int weight = sc.nextInt();
+        System.out.println("Provide recipient: ");
+        String recipient = sc.next();
+        System.out.println("Provide sender");
+        String sender = sc.next();
+        System.out.println("Provide sender's Locker name: ");
+        String senderPLName = sc.next();
+        System.out.println("Provide recipient's Locker name: ");
+        String recipientPLName = sc.next();
+
+        Package package1 = new Package(name, size, weight, recipient, sender,
+                new ParcelLocker(senderPLName), new ParcelLocker(recipientPLName));
+
+        ParcelLockerManager.addPackage(package1);
+    }
+
+    public static void showPackagesByLocker() {
+        System.out.println("Provide Locker's id:");
+        String id = sc.next();
+        ParcelLockerManager.showPackages(id);
     }
 
 
