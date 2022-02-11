@@ -4,7 +4,6 @@ import com.sda.parcel_locker.model.Address;
 import com.sda.parcel_locker.model.Package;
 import com.sda.parcel_locker.model.ParcelLocker;
 import com.sda.parcel_locker.model.Size;
-import com.sda.parcel_locker.service.PackageManager;
 import com.sda.parcel_locker.service.ParcelLockerManager;
 
 import java.util.Scanner;
@@ -13,8 +12,6 @@ public class UserInterface {
 
     private static Scanner sc = new Scanner(System.in).useDelimiter("\n");
     private static ParcelLockerManager parcelLockerManager = new ParcelLockerManager();
-
-    private static PackageManager packageManager = new PackageManager();
     private static String choice;
 
     public static void showMenu() {
@@ -72,7 +69,8 @@ public class UserInterface {
             switch (choice) {
                 case "1" -> addPackage();
                 case "2" -> showPackagesByLocker();
-                case "3" -> packageManager.updatePackageName();
+                // TODO
+                case "3" -> System.out.println("update package");
                 case "4" -> removePackage();
                 case "5" -> showMenu();
                 case "0" -> System.out.println("Good bye");
@@ -165,8 +163,8 @@ public class UserInterface {
 
         Package package1 = new Package(name, size, weight, recipient, sender,
                 new ParcelLocker(senderPLName), new ParcelLocker(recipientPLName));
-
         ParcelLockerManager.addPackage(package1);
+        System.out.println("Package created");
     }
 
     public static void showPackagesByLocker() {
@@ -178,12 +176,11 @@ public class UserInterface {
     public static void removePackage() {
         System.out.println("Provide id: ");
         String name = sc.next();
+
         if (ParcelLockerManager.removePackage(name)) {
             System.out.println("Package deleted");
         } else {
             System.out.println("Wrong id");
         }
     }
-
-
 }

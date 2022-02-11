@@ -95,6 +95,16 @@ public class Package {
 
     @Override
     public String toString() {
-        return "Package id: " + id + " ,name: " + name;
+        return "Package{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", size=" + size +
+                ", weight=" + weight +
+                ", recipient='" + recipient + '\'' +
+                ", sender='" + sender + '\'' +
+                ", senderPL=" + senderPL +
+                ", recipientPL=" + recipientPL +
+                ", state=" + state +
+                '}';
     }
 }

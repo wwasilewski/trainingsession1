@@ -21,12 +21,6 @@ public class ParcelLocker {
         this.packages = new ArrayList<>();
     }
 
-    public ParcelLocker(String name, Address address, List<Package> packages) {
-        this.name = name;
-        this.address = address;
-        this.packages = packages;
-    }
-
     public String getId() {
         return id;
     }
