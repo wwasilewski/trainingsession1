@@ -62,7 +62,7 @@ public class UserInterface {
     public static void showPackageMenu() {
         do {
             System.out.println("[1] Create Package");
-            System.out.println("[2] Show all packages by Locker");
+            System.out.println("[2] Show all Packages by Locker");
             System.out.println("[3] Update Package");
             System.out.println("[4] Delete Package");
             System.out.println("[5] BACK");
@@ -73,7 +73,7 @@ public class UserInterface {
                 case "1" -> addPackage();
                 case "2" -> showPackagesByLocker();
                 case "3" -> packageManager.updatePackageName();
-                case "4" -> packageManager.deletePackage();
+                case "4" -> removePackage();
                 case "5" -> showMenu();
                 case "0" -> System.out.println("Good bye");
                 default -> System.out.println("Wrong input, pick again");
@@ -173,6 +173,16 @@ public class UserInterface {
         System.out.println("Provide Locker's id:");
         String id = sc.next();
         ParcelLockerManager.showPackages(id);
+    }
+
+    public static void removePackage() {
+        System.out.println("Provide id: ");
+        String name = sc.next();
+        if (ParcelLockerManager.removePackage(name)) {
+            System.out.println("Package deleted");
+        } else {
+            System.out.println("Wrong id");
+        }
     }
 
 

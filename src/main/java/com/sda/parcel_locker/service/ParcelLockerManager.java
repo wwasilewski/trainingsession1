@@ -102,6 +102,17 @@ public class ParcelLockerManager {
         }
     }
 
+    public static boolean removePackage(String id) {
+        for (ParcelLocker parcelLocker : parcelLockers) {
+            for (Package aPackage : parcelLocker.getPackages())
+                if (aPackage.getId().equals(id)) {
+                    parcelLocker.getPackages().remove(aPackage);
+                    return true;
+                }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "ParcelLockerManager{" +

@@ -25,6 +25,10 @@ public class Package {
         this.recipientPL = recipientPL;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
