@@ -22,8 +22,7 @@ public class ParcelLockerManager {
         parcelLockers.add(new ParcelLocker("GD5", new Address("Gdanska", "Gdansk", "55-712")));
     }
 
-    public static ParcelLocker addLocker(String name, Address address) {
-        ParcelLocker parcelLocker = new ParcelLocker(name, address);
+    public static ParcelLocker addLocker(ParcelLocker parcelLocker) {
         parcelLockers.add(parcelLocker);
         return parcelLocker;
     }
@@ -71,7 +70,6 @@ public class ParcelLockerManager {
         }
         return false;
     }
-
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package com.sda.parcel_locker.userinterface;
 
 import com.sda.parcel_locker.model.Address;
+import com.sda.parcel_locker.model.ParcelLocker;
 import com.sda.parcel_locker.service.PackageManager;
 import com.sda.parcel_locker.service.ParcelLockerManager;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in).useDelimiter("\n");
     private static ParcelLockerManager parcelLockerManager = new ParcelLockerManager();
 
     private static PackageManager packageManager = new PackageManager();
@@ -43,33 +44,15 @@ public class UserInterface {
 
             choice = sc.next();
             switch (choice) {
-                case "1":
-                    addLocker();
-                    break;
-                case "2":
-                    showAllLockers();
-                    break;
-                case "3":
-                    showLockersByCity();
-                    break;
-                case "4":
-                    updateLockerName();
-                    break;
-                case "5":
-                    updateLockerAddress();
-                    break;
-                case "6":
-                    removeLocker();
-                    break;
-                case "7":
-                    showMenu();
-                    break;
-                case "0":
-                    System.out.println("Good bye");
-                    break;
-                default:
-                    System.out.println("Wrong input, pick again");
-                    break;
+                case "1" -> addLocker();
+                case "2" -> showAllLockers();
+                case "3" -> showLockersByCity();
+                case "4" -> updateLockerName();
+                case "5" -> updateLockerAddress();
+                case "6" -> removeLocker();
+                case "7" -> showMenu();
+                case "0" -> System.out.println("Good bye");
+                default -> System.out.println("Wrong input, pick again");
             }
         } while (!choice.equals("0"));
     }
@@ -105,8 +88,9 @@ public class UserInterface {
         String city = sc.next();
         System.out.println("Provide postalCode: ");
         String postalCode = sc.next();
+        ParcelLocker parcelLocker = new ParcelLocker(name, new Address(street, city, postalCode));
 
-        ParcelLockerManager.addLocker(name, new Address(street, city, postalCode));
+        ParcelLockerManager.addLocker(parcelLocker);
         System.out.println("Parcel Locker created");
     }
 
@@ -118,8 +102,11 @@ public class UserInterface {
         System.out.println("Provide id: ");
         String id = sc.next();
 
-        ParcelLockerManager.removeLocker(id);
-        System.out.println("Locker removed");
+        if (ParcelLockerManager.removeLocker(id)) {
+            System.out.println("Locker removed");
+        } else {
+            System.out.println("Wrong id");
+        }
     }
 
     public static void showLockersByCity() {
@@ -134,8 +121,11 @@ public class UserInterface {
         System.out.println("Provide new name: ");
         String name = sc.next();
 
-        ParcelLockerManager.updateLockerName(id, name);
-        System.out.println("Locker updated");
+        if (ParcelLockerManager.updateLockerName(id, name)) {
+            System.out.println("Locker updated");
+        } else {
+            System.out.println("Wrong id");
+        }
     }
 
     public static void updateLockerAddress() {
@@ -148,8 +138,11 @@ public class UserInterface {
         System.out.println("Provide new postalCode: ");
         String postal = sc.next();
 
-        ParcelLockerManager.updateLockerAddress(id, new Address(street, city, postal));
-        System.out.println("Locker updated");
+        if (ParcelLockerManager.updateLockerAddress(id, new Address(street, city, postal))) {
+            System.out.println("Locker updated");
+        } else {
+            System.out.println("Wrong id");
+        }
     }
 
 
